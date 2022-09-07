@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>tp-session</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% if (locals.userLogin) { %>
+    <main class="<%= color %> ">
+      <div>
+          <form action="" method="post">
+            <div>
+              <h1>Hola <%= nombre %> , elegiste el color: <%= color %> , tu email es:
+                <%= email %><%= edad ? "y tu edad es: " + edad : null %>  
+                
+              </h1>
+            </div>
+            <div>
+              <label for="nombre">ingrese su nombre</label>
+              <input type="text" name="nombre" id="nombre">
+              <p class="errorText"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %></p>
+
+
+            </div>
+            <div>
+              <label for="color">Seleccione un color</label>
+              <select name="color" id="color">
+                <option value="" hidden></option>
+                <option value="red">rojo</option>
+                <option value="yellow">amarillo</option>
+                <option value="blue">azul</option>
+              </select>
+              <p class="errorText"><%= locals.errors && errors.color ? errors.color.msg : null %></p>
+
+
+            </div>
+            <div>
+              <label for="email">ingrese su email</label>
+              <input type="email" name="email" id="email">
+              <p class="errorText"><%= locals.errors && errors.email ? errors.email.msg : null %></p>
+
+
+            </div>
+            <div>
+              <label for="edad">ingrese su edad</label>
+              <input type="number" name="edad" id="edad">
+              <p class="errorText"><%= locals.errors && errors.edad ? errors.edad.msg : null %></p>
+
+
+            </div>
+            <div>
+              <label for="recordarme">Recordarme</label>
+            <input type="checkbox" name="recordarme" id="recordarme">
+              <button type="submit">enviar</button>
+              <div class="accessButton"> <a href="/mensaje">acceder</a></div>
+            </div>
+          </form>
+        </div>
+      </main>
+        <% } else { %>
+        
+        <form action="" method="post">
+          <div>
+            <label for="nombre">ingrese su nombre</label>
+            <input type="text" name="nombre" id="nombre">
+            <p class="errorText"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %></p>
+
+
+          </div>
+          <div>
+            <label for="color">Seleccione un color</label>
+            <select name="color" id="color">
+              <option value="" hidden></option>
+              <option value="red">rojo</option>
+              <option value="yellow">amarillo</option>
+              <option value="blue">azul</option>
+            </select>
+            <p class="errorText"><%= locals.errors && errors.color ? errors.color.msg : null %></p>
+
+
+          </div>
+          <div>
+            <label for="email">ingrese su email</label>
+            <input type="email" name="email" id="email" >
+            <p class="errorText"><%= locals.errors && errors.email ? errors.email.msg : null %></p>
+
+
+          </div>
+          <div>
+            <label for="edad">ingrese su edad</label>
+            <input type="number" name="edad" id="edad" >
+            <p class="errorText"><%= locals.errors && errors.edad ? errors.edad.msg : null %></p>
+
+
+          </div>
+          <div>
+            <label for="recordarme">Recordarme</label>
+            <input type="checkbox" name="recordarme" id="recordarme">
+            <button type="submit">enviar</button>
+          </div>
+        </form>
+        <% } %>
+  </body>
+</html>
